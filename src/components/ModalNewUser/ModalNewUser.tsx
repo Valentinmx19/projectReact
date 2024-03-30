@@ -2,7 +2,7 @@ import Input from "../Input";
 import { useForm } from "react-hook-form";
 import CustomModal from "../CustomModal";
 import { FC, useEffect, useState } from "react";
-import { Row } from "react-bootstrap";
+import { Form, Row } from "react-bootstrap";
 import CustomSelect from "../CustomSelect";
 import AdminFormInfo from "../AdminFormInfo";
 import DocenteFormInfo from "../DocenteFormInfo";
@@ -22,12 +22,9 @@ const ModalNewUser: FC<NewUserModalType> = (props) => {
 
     const handleSelectvalue = (e:React.ChangeEvent<HTMLSelectElement>) => {
         let rolCurrent = e.target.options[e.target.selectedIndex].value;
+        let currentIndex = e.target.options.selectedIndex;
         setRol(rolCurrent);
     }
-
-    useEffect(() => {
-      props.show ? "" : setRol("");   
-    }, [props.show])
 
     return (
        <>
@@ -45,8 +42,8 @@ const ModalNewUser: FC<NewUserModalType> = (props) => {
                     <Input control={control} colSize="3" fieldName="Teléfono*" fieldType="text" name="numberphone" fieldErrors="" fieldStyles="" />
                 </Row>
                 <Row className={`${rol ? "mb-3" : ""} d-flex justify-content-center`}>
-                    <CustomSelect fieldTitle="Escoger Rol*" colSize="3" onChange={handleSelectvalue}>
-                        <option value={""}>Escoger Rol</option>
+                    <CustomSelect colSize="3" onChange={handleSelectvalue} fieldValue={rol}>
+                        <option value={""} className="bg-success" disabled >Seleccionar Rol</option>
                         <option value={"admin"}>Administrador</option>
                         <option value={"docente"}>Docente</option>
                         <option value={"alumno"}>Alumno</option>

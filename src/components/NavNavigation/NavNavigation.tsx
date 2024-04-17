@@ -5,7 +5,7 @@ const NavNavigation = ({children}:{children: ReactNode}) => {
     return (
         <>
             {['sm']?.map((expand) => (
-                <Navbar key={expand} expand={expand} className="bg-success mb-3">
+                <Navbar key={expand} expand={expand} className="bg-dark bg-gradient mb-3">
                     <Container fluid>
                         <Navbar.Brand href="#">
                             <Image src="https://utsh.edu.mx/wp-content/uploads/2021/01/logo_nomb_utsh.png" width={'250px'} />

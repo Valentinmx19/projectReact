@@ -1,4 +1,4 @@
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { FC, ReactNode } from "react";
 
 type NewUserType = {
@@ -6,8 +6,7 @@ type NewUserType = {
     onHide: () => void;
     children: ReactNode;
     modaltitle: string;
-    titlebuttonchanges: string;
-    actionbuttonchanges: () => void;
+    size?: "xl" | "sm" | "lg" | undefined;
 }
 
 const CustomModal: FC<NewUserType> = (props) =>{
@@ -15,11 +14,11 @@ const CustomModal: FC<NewUserType> = (props) =>{
         <>
             <Modal 
             {...props}
-            size="xl"
+            size={props.size ? props.size : "xl"}
             aria-labelledby="contained-modal-title-vcenter"
             centered
             >
-                <Modal.Header closeButton className="d-flex justify-content-center">
+                <Modal.Header className="d-flex justify-content-center">
                     <Modal.Title id="contained-modal-title-vcenter">
                         {props.modaltitle}
                     </Modal.Title>
@@ -27,10 +26,6 @@ const CustomModal: FC<NewUserType> = (props) =>{
                 <Modal.Body>
                     {props.children}
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={props.onHide}>Close</Button>
-                    <Button onClick={props.actionbuttonchanges}>{props.titlebuttonchanges}</Button>
-                </Modal.Footer>
         </Modal>
         </>
     )

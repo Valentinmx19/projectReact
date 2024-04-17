@@ -1,0 +1,6 @@
+.check {
+    border: none;
+}
+.check:focus {
+    box-shadow: none;
+}
